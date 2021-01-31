@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-success text-white text-center">
+				<h3>WELCOME TO SHIPMENT TYPE DATA PAGE</h3>
+			</div>
+
+			<div class="card-body">
+
+				<table class="table table-hover">
+					<tr class="bg-primary text-white">
+						<th>ID</th>
+						<th>MODE</th>
+						<th>CODE</th>
+						<th>ENABLE</th>
+						<th>GRADE</th>
+						<th>DESCRIPTION</th>
+						<th>OPERATION</th>
+					</tr>
+					<tr th:each="ob:${list}">
+						<td th:text="${ob.id}"></td>
+						<td th:text="${ob.shipmentMode}"></td>
+						<td th:text="${ob.shipmentCode}"></td>
+						<td th:text="${ob.enableShipment}"></td>
+						<td th:text="${ob.shipmentGrade}"></td>
+						<td th:text="${ob.shipmentDescription}"></td>
+						<td><a th:href="@{/st/delete(id=${ob.id})}" class="btn btn-danger">DELETE</a> 
+						| 
+							<a href="#" class="btn btn-info">EDIT</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="card-footer alert alert-success" th:if="${message!=null}">
+			   <span th:text="${message}"></span>
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>
